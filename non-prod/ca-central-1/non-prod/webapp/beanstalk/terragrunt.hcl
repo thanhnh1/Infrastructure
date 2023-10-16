@@ -35,10 +35,10 @@ dependency "s3_logs" {
 
 inputs = {
   # Elastic Beanstalk Configuration
-  bealstalk_application_name                 = "beanstalk-app"
+  bealstalk_application_name                 = "np-beanstalk-app"
   bealstalk_application_description          = "Beanstalk application"
-  beanstalk_environtment_name                = "beanstalk-env"
-  beanstalk_environtment_cname               = "awebapp-non-prod"
+  beanstalk_environtment_name                = "np-beanstalk-env"
+  beanstalk_environtment_cname               = "webapp-non-prod"
   beanstalk_environtment_tier                = "WebServer"
   beanstalk_environtment_solution_stack_name = "64bit Windows Server 2019 v2.11.5 running IIS 10.0"
   beanstalk_environtment_tags = {
@@ -48,14 +48,14 @@ inputs = {
 
   # Elastic Beanstalk Settings
   ## Email Settings
-  beanstalk_notification_email = "Thanh.HaiNguyen@coxautoinc.ca"
+  beanstalk_notification_email = "Thanh.HaiNguyen@email.com"
 
   ## Launch Configurations
   beanstalk_instance_role_name    = dependency.beanstalk_ec2_role.outputs.iam_role_name
   beanstalk_instance_type         = "t2.micro"
   beanstalk_instance_volume_size  = 100
   beanstalk_instance_volume_type  = "gp2"
-  beanstalk_instance_keypair_name = "non-prod-beanstalk"
+  beanstalk_instance_keypair_name = "np-beanstalk-keypair"
 
   ## Environment - Service Role
   beanstalk_service_role_name = "aws-elasticbeanstalk-service-role"
