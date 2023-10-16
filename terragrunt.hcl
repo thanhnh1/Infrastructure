@@ -5,8 +5,8 @@ locals {
   # Automatically load region-level variables
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
 
-  # Automatically load environment-level variables
-  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
+  # # Automatically load environment-level variables
+  # environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
   # Extract the variables we need for easy access
   aws_account_alias           = local.account_vars.locals.aws_account_alias
@@ -42,7 +42,7 @@ remote_state {
   config = {
     encrypt        = true
     bucket         = "tfstates-${local.aws_region}-${local.aws_account_alias}"
-    key            = "${local.workload_name}/${path_relative_to_include()}/terraform.tfstate"
+    key            = "${path_relative_to_include()}/terraform.tfstate"
     region         = local.aws_region
     kms_key_id     = local.aws_account_data_kms_key_id
     dynamodb_table = "terraform-locks"
@@ -65,5 +65,5 @@ remote_state {
 inputs = merge(
   local.account_vars.locals,
   local.region_vars.locals,
-  local.environment_vars.locals,
+  # local.environment_vars.locals,
 )

@@ -82,7 +82,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_environment" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "SSHSourceRestriction"
-    value     = "tcp, 3389, 3389, ${data.aws_security_group.vpn_sg.id}"
+    value     = "tcp, 3389, 3389"
   }
 
   # Environment - Service Role

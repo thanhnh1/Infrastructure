@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../../../modules/iam-beanstalk"
+  source = "../../../../..//modules/iam-beanstalk"
 }
 
 include {
