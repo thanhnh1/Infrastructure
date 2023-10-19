@@ -1,4 +1,4 @@
-name: 'Deploy resources to each AWS account'
+name: 'Action to each AWS account'
 on:
   workflow_call:
     inputs:
@@ -19,7 +19,7 @@ on:
 runs:
   using: "composite"
   steps:
-    - name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
+    - name: Action to environment
       shell: bash
       run: echo "Environment: ${{ inputs.environment }}"
 
