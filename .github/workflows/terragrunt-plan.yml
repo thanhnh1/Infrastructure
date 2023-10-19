@@ -8,7 +8,7 @@ on:
 jobs:
   PlanToDev:
     name: 'Plan-to-dev'
-    uses: ./.github/actions/action.yml
+    uses: ./.github/actions
     with:
       environment: Development
       tg_dir: ./non-prod/ca-central-1/non-prod
@@ -16,7 +16,7 @@ jobs:
 
   PlanToProd:
     name: 'Plan-to-prod'
-    uses: ./.github/actions/action.yml
+    uses: ./.github/actions
     with:
       environment: Production
       tg_dir: ./prod/ca-central-1/prod
