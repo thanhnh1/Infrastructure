@@ -1,0 +1,37 @@
+name: 'Deploy resources to each AWS account'
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        default: '.'
+      tf_version: '1.4.6'
+      tg_version: '0.46.3'
+      # Terragrunt directory is the location from where this workflow will be triggered
+      tg_dir:
+        required: true
+        type: string
+      tg_command:
+        required: true
+        type: string
+
+jobs:
+  Terragrunt:
+    name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
+    runs-on: self-hosted
+    environment: ${{ inputs.environment }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: ${{ inputs.tg_command }}
+        uses: gruntwork-io/terragrunt-action@v1
+        with:
+          tf_version: ${{ inputs.tf_version }}
+          tg_version: ${{ inputs.tg_version }}
+          tg_dir: ${{ inputs.tg_dir }}
+          tg_command: ${{ inputs.tg_command }}

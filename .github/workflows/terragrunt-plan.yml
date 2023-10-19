@@ -1,0 +1,23 @@
+name: 'Terragrunt GitHub actions plan to multiple environments'
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  PlanToDev:
+    name: 'Plan-to-dev'
+    uses: ./.github/actions/action.yml
+    with:
+      environment: Development
+      tg_dir: ./non-prod/ca-central-1/non-prod
+      tg_command: plan
+
+  PlanToProd:
+    name: 'Plan-to-prod'
+    uses: ./.github/actions/action.yml
+    with:
+      environment: Production
+      tg_dir: ./prod/ca-central-1/prod
+      tg_command: plan
