@@ -21,7 +21,8 @@ runs:
   steps:
     - name: Action to environment
       shell: bash
-      run: echo "Environment: ${{ inputs.environment }}"
+      run: |
+        echo "Environment: ${{ inputs.environment }}"
 
     - name: ${{ inputs.tg_command }}
       shell: bash
