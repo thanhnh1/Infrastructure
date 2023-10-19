@@ -24,8 +24,7 @@ runs:
       run: |
         echo "Environment: ${{ inputs.environment }}"
 
-    - name: ${{ inputs.tg_command }}
-      shell: bash
+    - name: Terragrunt command
       uses: gruntwork-io/terragrunt-action@v1
       with:
         tf_version: ${{ inputs.tf_version }}
