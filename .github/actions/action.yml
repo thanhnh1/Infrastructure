@@ -19,7 +19,6 @@ on:
 runs:
   using: "composite"
   name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
-  runs-on: self-hosted
   environment: ${{ inputs.environment }}
   defaults:
     run:
