@@ -18,16 +18,16 @@ on:
 
 runs:
   using: "composite"
-  name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
-  environment: ${{ inputs.environment }}
-  defaults:
-    run:
-      shell: bash
   steps:
+    - name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
+      shell: bash
+      run: echo "Environment: ${{ inputs.environment }}"
+
     - name: ${{ inputs.tg_command }}
-        uses: gruntwork-io/terragrunt-action@v1
-        with:
-          tf_version: ${{ inputs.tf_version }}
-          tg_version: ${{ inputs.tg_version }}
-          tg_dir: ${{ inputs.tg_dir }}
-          tg_command: ${{ inputs.tg_command }}
+      shell: bash
+      uses: gruntwork-io/terragrunt-action@v1
+      with:
+        tf_version: ${{ inputs.tf_version }}
+        tg_version: ${{ inputs.tg_version }}
+        tg_dir: ${{ inputs.tg_dir }}
+        tg_command: ${{ inputs.tg_command }}
