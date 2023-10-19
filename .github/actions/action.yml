@@ -16,15 +16,15 @@ on:
         required: true
         type: string
 
-jobs:
-  Terragrunt:
-    name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
-    runs-on: self-hosted
-    environment: ${{ inputs.environment }}
-    defaults:
-      run:
-        shell: bash
-    steps:
+runs:
+  using: "composite"
+  name: ${{ inputs.tg_command }} to ${{ inputs.environment }}
+  runs-on: self-hosted
+  environment: ${{ inputs.environment }}
+  defaults:
+    run:
+      shell: bash
+  steps:
     - name: Checkout
       uses: actions/checkout@v3
 
