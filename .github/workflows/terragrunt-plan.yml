@@ -8,6 +8,10 @@ on:
 jobs:
   PlanToDev:
     runs-on: self-hosted
+    container:
+      options:
+        --user root
+        --workdir=/home/ubuntu/actions-runner-1/_work/Infrastructure/Infrastructure
     steps:
     - name: Checkout source code
       uses: actions/checkout@v3
