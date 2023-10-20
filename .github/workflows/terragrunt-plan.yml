@@ -8,10 +8,6 @@ on:
 jobs:
   PlanToDev:
     runs-on: self-hosted
-    container:
-      options:
-        --user root
-        --workdir=/home/ubuntu/actions-runner-1/_work/Infrastructure/Infrastructure
     steps:
     - name: Checkout source code
       uses: actions/checkout@v3
@@ -22,7 +18,7 @@ jobs:
       uses: ./.github/actions
       with:
         environment: Development
-        tg_dir: ./non-prod/ca-central-1/non-prod
+        tg_dir: /home/ubuntu/actions-runner-1/_work/Infrastructure/Infrastructure/non-prod/ca-central-1/non-prod
         tg_command: run-all plan
         tf_version: '1.4.6'
         tg_version: '0.46.3'
